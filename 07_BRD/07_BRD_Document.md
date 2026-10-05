@@ -6,7 +6,7 @@
 ### Document Control & Metadata
 * **Project Name:** PharmaCart — Omni-Channel Retail Pharmacy Ordering & Inventory Platform
 * **Document Identifier:** PC-BRD-DOC-007
-* **Version:** 1.0 (Baseline Approved)
+* **Version:** 1.0 (Baseline Proposal - Pending Sign-Off)
 * **Author / Principal Business Analyst:** Ritesh Jadhav, Lead Systems Analyst & Solution Architect
 * **Project Sponsor:** Managing Director & Executive Board, PharmaCart Retail Pharmacy Chain
 * **Target Audience:** Executive Steering Committee, Store General Managers, Commercial & Clinical Stakeholders, Architecture & Engineering Teams
@@ -263,15 +263,15 @@ Even under conservative sensitivity modeling where initial online adoption reach
 
 ## 9. Operational Acceptance & Sign-Off
 
-The undersigned commercial, operational, and clinical executives confirm that this Business Requirements Document accurately reflects the strategic vision, commercial targets, and operational requirements of the PharmaCart platform.
+The following commercial, operational, and clinical executives are designated to review, endorse, and accept this Business Requirements Document. Formal operational baseline endorsement remains pending final convening and sign-off.
 
 | Executive Role | Stakeholder Name | Signature & Endorsement Date | Approval Status |
 | :--- | :--- | :---: | :---: |
-| **Principal Business Analyst & Architect** | **Ritesh Jadhav** | *[Signed]* — 2026-10-05 | **APPROVED** |
-| **Managing Director & Chain Owner** | Executive Sponsor | *[Signed]* — 2026-10-05 | **APPROVED** |
-| **Chief Pharmacist & Compliance VP** | Dr. A. K. Patel | *[Signed]* — 2026-10-05 | **APPROVED** |
-| **VP of Retail Store Operations** | Retail Operations GM | *[Signed]* — 2026-10-05 | **APPROVED** |
-| **VP of Commercial Strategy & Marketing**| Commercial Lead | *[Signed]* — 2026-10-05 | **APPROVED** |
+| **Principal Business Analyst & Architect** | **Ritesh Jadhav** | Pending | **Pending** |
+| **Managing Director & Chain Owner** | Executive Sponsor | Pending | **Pending** |
+| **Chief Pharmacist & Compliance VP** | Dr. A. K. Patel | Pending | **Pending** |
+| **VP of Retail Store Operations** | Retail Operations GM | Pending | **Pending** |
+| **VP of Commercial Strategy & Marketing**| Commercial Lead | Pending | **Pending** |
 
 ---
 *End of Document 07: Business Requirements Document (BRD)*

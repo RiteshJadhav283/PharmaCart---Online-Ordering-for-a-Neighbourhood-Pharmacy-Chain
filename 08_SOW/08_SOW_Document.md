@@ -6,7 +6,7 @@
 ### Contractual Document Control & Metadata
 * **Project Name:** PharmaCart — Omni-Channel Retail Pharmacy Ordering & Inventory Platform
 * **Document Identifier:** PC-SOW-DOC-008
-* **Version:** 1.0 (Legally Binding Baseline)
+* **Version:** 1.0 (Contractual Proposal - Pending Execution)
 * **Effective Date:** October 5, 2026
 * **Engagement Lead / Solution Architect:** Ritesh Jadhav, Lead Project Manager & Systems Architect
 * **Client / Project Sponsor:** Managing Director & Executive Board, PharmaCart Retail Pharmacy Chain
@@ -205,13 +205,13 @@ Upon receipt of full and final payment for Milestone 6 (M6), **100% of all custo
 
 ## 9. Formal Contractual Execution & Sign-Off
 
-IN WITNESS WHEREOF, the authorized representatives of the Parties have executed and delivered this Statement of Work as of the Effective Date written above.
+The following authorized representatives of the Parties are designated to execute and deliver this Statement of Work as of the Effective Date written above. Formal contract execution remains pending final review and bilateral signing.
 
 | Contractual Entity | Signatory Name & Title | Date | Signature & Corporate Seal | Contract Status |
 | :--- | :--- | :---: | :---: | :---: |
-| **Solution Delivery Partner** | **Ritesh Jadhav**<br>Lead Systems Architect & Engagement Manager | 2026-10-05 | *[Signed]* | **EXECUTED** |
-| **Client / Pharmacy Chain** | **Managing Director & Owner**<br>PharmaCart Retail Pharmacy Chain | 2026-10-05 | *[Signed]* | **EXECUTED** |
-| **Clinical Endorsement** | **Dr. A. K. Patel**<br>Chief Pharmacist & Compliance VP | 2026-10-05 | *[Signed]* | **RATIFIED** |
+| **Solution Delivery Partner** | **Ritesh Jadhav**<br>Lead Systems Architect & Engagement Manager | Pending | Pending | **Pending Execution** |
+| **Client / Pharmacy Chain** | **Managing Director & Owner**<br>PharmaCart Retail Pharmacy Chain | Pending | Pending | **Pending Execution** |
+| **Clinical Endorsement** | **Dr. A. K. Patel**<br>Chief Pharmacist & Compliance VP | Pending | Pending | **Pending Endorsement** |
 
 ---
 *End of Document 08: Statement of Work (SOW)*
