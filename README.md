@@ -49,6 +49,60 @@ All core UML diagrams, workflows, and functional requirements have been translat
 
 ---
 
+## Core System Sequence: "Upload Rx & Place Order"
+
+This streamlined sequence diagram illustrates the end-to-end realization of customer prescription intake, asynchronous pharmacist clinical verification, 14-store proximity routing, 2-unit safety buffer deduction, and express counter/home fulfillment:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Customer as 👤 Customer (App)
+    participant OrderSvc as 📋 Order Service
+    participant RxSvc as 💊 Prescription Service
+    actor Pharmacist as 👨‍⚕️ Duty Pharmacist
+    participant InvSvc as 🏪 Store Inventory & Router
+    participant PayGW as 💳 UPI Gateway
+
+    %% Phase 1: Upload
+    rect rgb(240, 249, 255)
+    Note over Customer,RxSvc: Phase 1: Basket Creation & Rx Intake
+    Customer->>RxSvc: 1. Upload Doctor Prescription (Image/PDF)
+    RxSvc-->>Customer: Prescription Saved & Encrypted (Rx-ID)
+    Customer->>OrderSvc: 2. Checkout Basket with Rx-ID
+    OrderSvc->>RxSvc: Enqueue Rx for Verification (Status: PENDING_VERIFICATION)
+    end
+
+    %% Phase 2: Doctor Check
+    rect rgb(254, 243, 199)
+    Note over RxSvc,Pharmacist: Phase 2: Pharmacist Clinical Review (SLA <= 15 Min)
+    RxSvc->>Pharmacist: 3. Review Next Pending Rx in FIFO Queue
+    Pharmacist->>Pharmacist: Validate Doctor Seal, Reg No., Dosage & Validity
+    Pharmacist->>RxSvc: 4. Approve Prescription (Digital Stamp & PIN)
+    RxSvc-->>OrderSvc: Event: Prescription Approved
+    end
+
+    %% Phase 3: Smart Routing & Stock Hold
+    rect rgb(240, 253, 244)
+    Note over OrderSvc,InvSvc: Phase 3: 14-Store Proximity Routing & 30-Min Hold
+    OrderSvc->>InvSvc: 5. Query Best Store & Reserve Stock
+    InvSvc->>InvSvc: Select Nearest Store (Store #04 - Navrangpura)
+    InvSvc->>InvSvc: Apply Safety Buffer: Effective = Max(0, Physical - 2)
+    InvSvc-->>OrderSvc: 30-Minute Soft Reservation Confirmed
+    end
+
+    %% Phase 4: Pay & Confirm
+    rect rgb(245, 243, 255)
+    Note over Customer,PayGW: Phase 4: UPI Payment & Fulfillment Trigger
+    OrderSvc->>Customer: 6. Request Payment Prompt (₹745.00)
+    Customer->>PayGW: 7. Authorize UPI Payment
+    PayGW-->>OrderSvc: 8. Webhook: Payment Success Callback
+    OrderSvc->>InvSvc: 9. Finalize Stock Deduction (Hard Allocation)
+    OrderSvc-->>Customer: 10. Order Confirmed! (SMS Alert + 6-Digit Pickup OTP)
+    end
+```
+
+---
+
 ## Key Project Engineering Metrics
 
 ```text
