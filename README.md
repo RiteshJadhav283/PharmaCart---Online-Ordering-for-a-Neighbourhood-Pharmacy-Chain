@@ -25,6 +25,8 @@ This repository contains the complete, industry-standard **Software Engineering 
 | [**04_Test_Plan_and_Evidence/**](./04_Test_Plan_and_Evidence/04_Test_Plan_and_Evidence.md) | **Master Test Plan, Verification Evidence & QA Metrics** | IEEE Std 829 Test Strategy, Boundary Value Analysis (BVA for [1–30] quantities and [₹50–₹500] coupons), Equivalence Partitioning, 8-Rule Decision Table for Schedule H/H1 and Stock Rules, 18-Item Execution Defect Log, Defect Density (0.25 defects/SP; 1.44 defects/KLOC), and Defect Removal Efficiency (DRE = 90.0%). |
 | [**05_Risk_Register_and_Closure_Note/**](./05_Risk_Register_and_Closure_Note/05_Risk_Register_and_Closure_Note.md) | **Risk Register, RMMM Action Plans & Project Retrospective** | $5 \times 5$ Probability-Impact Matrix, Exposure-Ranked Risk Register ($RE = P \times I$), In-Depth Risk vs. Issue Case Study (resolving physical store stock mismatch via 2-unit safety buffers and 30-min soft holds), Full RMMM Plans for Top 3 Risks, and Engineering Lessons Learned Retrospective. |
 | [**06_Change_Management/**](./06_Change_Management/06_Change_Management.md) | **Change Management Plan & Change Control Governance** | Change Control Board (CCB) Charter & Voting Rules, 6-Step Formal Change Control Lifecycle, Marketing Request Walkthrough (`CR-01: Chronic Auto-Refill & Coupons`, 28 SP funded from ₹5.20L contingency), Master Change Request Log (`CR-01` to `CR-04`), Anti-Scope Creep Guidelines, and Formal CCB Sign-Off Table. |
+| [**07_BRD/**](./07_BRD/07_BRD_Document.md) | **Business Requirements Document (BRD)** | Strategic Business Context (14 Ahmedabad Outlets), As-Is vs. To-Be Process Models, 5 Strategic KPIs, Stakeholder Personas (Chronic Caregiver, Store Pharmacist, Tele-Pharmacist), 10 High-Level Business Requirements (`BR-01` to `BR-10`), and Commercial Financial Feasibility / Break-Even ROI Analysis. |
+| [**08_SOW/**](./08_SOW/08_SOW_Document.md) | **Statement of Work (SOW)** | Legally Binding Commercial Scope, Contractual Milestones (M1 to M6 across 12 Weeks), Milestone Billing & Payment Schedule (₹8.80L Core MVP + ₹5.20L Contingency), RACI Governance Matrix, NFR Acceptance Quality Gates, Scope Trade-In Rules, and IP/Warranty Terms. |
 
 ---
 
@@ -73,6 +75,10 @@ This repository contains the complete, industry-standard **Software Engineering 
 ├── 06_Change_Management/
 │   ├── 06_Change_Management.md
 │   └── 06_Change_Management.pdf
+├── 07_BRD/
+│   └── 07_BRD_Document.md
+├── 08_SOW/
+│   └── 08_SOW_Document.md
 └── README.md
 ```
 
