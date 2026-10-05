@@ -207,11 +207,11 @@ Upon receipt of full and final payment for Milestone 6 (M6), **100% of all custo
 
 The following authorized representatives of the Parties are designated to execute and deliver this Statement of Work as of the Effective Date written above. Formal contract execution remains pending final review and bilateral signing.
 
-| Contractual Entity | Signatory Name & Title | Date | Signature & Corporate Seal | Contract Status |
+| Contractual Entity | Signatory Name & Title | Date | Signature & Corporate Seal | Approval Status |
 | :--- | :--- | :---: | :---: | :---: |
-| **Solution Delivery Partner** | **Ritesh Jadhav**<br>Lead Systems Architect & Engagement Manager | Pending | Pending | **Pending Execution** |
-| **Client / Pharmacy Chain** | **Managing Director & Owner**<br>PharmaCart Retail Pharmacy Chain | Pending | Pending | **Pending Execution** |
-| **Clinical Endorsement** | **Dr. A. K. Patel**<br>Chief Pharmacist & Compliance VP | Pending | Pending | **Pending Endorsement** |
+| **Solution Delivery Partner** | **Ritesh Jadhav**<br>Lead Systems Architect & Engagement Manager | Pending | Pending | **Pending** |
+| **Client / Pharmacy Chain** | **Managing Director & Owner**<br>PharmaCart Retail Pharmacy Chain | Pending | Pending | **Pending** |
+| **Clinical Endorsement** | **Dr. A. K. Patel**<br>Chief Pharmacist & Compliance VP | Pending | Pending | **Pending** |
 
 ---
 *End of Document 08: Statement of Work (SOW)*
