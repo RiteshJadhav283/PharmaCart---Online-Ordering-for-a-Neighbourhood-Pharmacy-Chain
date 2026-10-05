@@ -30,6 +30,23 @@ This repository contains the complete, industry-standard **Software Engineering 
 
 ---
 
+## Stitch Interactive UI & High-Fidelity Prototype Suite
+
+All core UML diagrams, workflows, and functional requirements have been translated into a complete, responsive, medical-grade interactive UI suite on **Stitch**. The user experience employs a crisp **Clinical Clarity Light Scheme** (Hygienic Canvas `#FAF8FF` / `#FFFFFF`, Deep Clinical Teal `#0D9488`, Cerulean Blue `#0284C7`, Slate `#0F172A`, and Regulatory Amber `#D97706`).
+
+* **Stitch Project Name:** `projects/17457897745948134773`
+* **Project Title:** *PharmaCart - Omni-Channel Pharmacy Platform*
+* **Design Theme:** `Clinical Clarity Omnichannel` (Light Mode, Manrope + Inter Typography, 8px Rounded Architecture)
+
+| Screen & Device | Screen Identifier | Mapped UML & Requirements | Key Architectural & Interaction Features |
+| :--- | :--- | :--- | :--- |
+| **1. Customer Omni-Channel Storefront & Rx Vault**<br>*(Desktop)* | `58ea020efed84776bdd6d39d5fa5ad7f` | • System Context Model<br>• Use Case Diagram (`UC-01` to `UC-04`)<br>• Sequence Diagram (*"Upload Rx and Place Order"* Steps 1–8)<br>• `FR-01`, `FR-03` | • 14 Ahmedabad retail outlet switcher with live driving distance & stock flags.<br>• Real-time 2-unit safety buffer display (`Max(0, Physical - 2)`).<br>• Drag-and-drop Prescription Vault with real-time OCR validation preview.<br>• 30-minute soft reservation countdown cart drawer holding inventory in Redis. |
+| **2. Duty Pharmacist Clinical Verification Portal**<br>*(Desktop)* | `f5f30f3af6ae4503bb4ba3dc5a64f114` | • Use Case `UC-05` (Prescription Verification)<br>• Sequence Diagram (*"PharmacistReview"* Steps 9–15)<br>• Class Diagram (`Prescription`, `PharmacistReview`)<br>• `FR-02` (Schedule H/H1 Compliance) | • Dual-pane clinical inspection workstation.<br>• Left pane: High-resolution Rx pan/zoom viewer with Gujarat Pharmacy Council (GSPC) doctor credential verification.<br>• Right pane: Side-by-side line-item medicine dosage matching, generic substitution alerts, and Schedule H regulatory chips.<br>• Tele-pharmacy SLA countdown timer (<= 15 min) and 4-digit digital signing PIN authorization. |
+| **3. Express Counter Pickup & OTP Handover Terminal**<br>*(Tablet / Kiosk)* | `eeea772ba9b74557bb1e183fa901802f` | • `Order` Lifecycle State Machine (`READY_FOR_PICKUP` ➔ `COMPLETED`)<br>• Activity Diagram (In-Store Pickup Branch)<br>• `FR-08` (Counter Collection Handover) | • Ergonomic high-contrast touchscreen terminal optimized for store clerks.<br>• 6-digit cryptographic customer OTP numeric keypad.<br>• Real-time laser barcode scanner input hook.<br>• Tamper-evident sealed bag shelf/cubby locator (`Bin A-14`).<br>• 90-second express handover SLA badge and instant local POS receipt release. |
+| **4. Central Multi-Store Inventory & Routing Dashboard**<br>*(Desktop)* | `872e882315154562850421287306e5f7` | • Domain Class Diagram (`StoreInventory`, `OrderRoutingEngine`)<br>• Activity Diagram (Split-Fulfillment Fork)<br>• `FR-04`, `FR-05`, `FR-06`<br>• Risk Register Mitigation (`RSK-01`) | • Network-wide aggregate inventory grid across all 14 Ahmedabad pharmacies.<br>• Real-time POS daemon sync latency telemetry (`<= 30s`).<br>• Customer proximity routing visualizer with nearest sister-store automated failover.<br>• Distributed lock monitor, stock threshold alerts, and real-time Kafka event audit logs. |
+
+---
+
 ## Key Project Engineering Metrics
 
 ```text
