@@ -332,63 +332,37 @@ This sequence traces the end-to-end realization of **FR-01, FR-02, FR-05, FR-06,
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Customer as Customer (App)
-    participant UI as API Gateway
-    participant OrderSvc as Order Service
-    participant RxSvc as Prescription Service
-    actor Pharmacist as Duty Pharmacist
-    participant Router as Store Routing Engine
-    participant InvSvc as Store Inventory Manager
-    participant POS as Store #04 POS Terminal
-    participant PayGW as Payment Gateway (UPI)
-    participant Notif as Notification Gateway
+    actor Customer as 👤 Customer
+    participant OrderSvc as 📋 Order Service
+    participant RxSvc as 💊 Prescription Service
+    actor Pharmacist as 👨‍⚕️ Duty Pharmacist
+    participant InvSvc as 🏪 Inventory & Store Router
+    participant PayGW as 💳 UPI Gateway
 
-    %% Phase 1: Upload Prescription & Create Draft
-    Note over Customer,UI: Phase 1: Basket Creation & Rx Upload
-    Customer->>UI: POST /api/prescriptions (Multipart File)
-    UI->>RxSvc: uploadPrescription(file, patientDetails)
-    RxSvc->>RxSvc: Encrypt AES-256 & Store in S3 Vault
-    RxSvc-->>UI: Return prescriptionId (UUID)
-    UI-->>Customer: Prescription Uploaded Successfully
+    %% Phase 1: Upload
+    Customer->>RxSvc: 1. Upload Prescription (Image/PDF)
+    RxSvc-->>Customer: Prescription Saved (Rx-ID)
+    Customer->>OrderSvc: 2. Checkout Basket with Rx-ID
+    OrderSvc->>RxSvc: Send Rx for Verification
 
-    Customer->>UI: POST /api/orders/checkout (cartItems, prescriptionId, deliveryType)
-    UI->>OrderSvc: createOrder(cart, prescriptionId, "HOME_DELIVERY")
-    OrderSvc->>OrderSvc: Create Order (Status: PENDING_VERIFICATION)
-    OrderSvc->>RxSvc: enqueueForVerification(prescriptionId, orderId)
-    OrderSvc-->>Customer: Order Created (Awaiting Pharmacist Approval)
+    %% Phase 2: Doctor Check
+    RxSvc->>Pharmacist: 3. Review Prescription in FIFO Queue
+    Pharmacist->>RxSvc: 4. Approve Prescription (Seal & Signature)
+    RxSvc-->>OrderSvc: Rx Approved Notification
 
-    %% Phase 2: Pharmacist Verification
-    Note over RxSvc,Pharmacist: Phase 2: Mandatory Clinical Verification
-    RxSvc->>Pharmacist: Push Notification: New Pending Rx in Queue
-    Pharmacist->>RxSvc: fetchNextQueueItem()
-    RxSvc-->>Pharmacist: Display Rx Image + Patient Details + Cart Items
-    Pharmacist->>Pharmacist: Validate Doctor Seal, Reg No., Dosage & Validity
-    Pharmacist->>RxSvc: submitDecision(decision="APPROVE", councilRegId="GPC-44910", pin=****)
-    RxSvc->>RxSvc: Persist Signed PharmacistReview Record
-    RxSvc->>OrderSvc: publishEvent(PrescriptionApprovedEvent: orderId)
+    %% Phase 3: Smart Routing & Stock Hold
+    OrderSvc->>InvSvc: 5. Find Best Store & Reserve Stock
+    InvSvc->>InvSvc: Select Nearest Store (Navrangpura)
+    InvSvc->>InvSvc: Apply 2-Unit Safety Buffer & 30-Min Hold
+    InvSvc-->>OrderSvc: Stock Reserved Successfully
 
-    %% Phase 3: Store Routing & Inventory Reservation
-    Note over OrderSvc,InvSvc: Phase 3: Multi-Store Routing & Stock Hold
-    OrderSvc->>Router: resolveOptimalStore(ahmedabadCoordinates, basketItems)
-    Router->>InvSvc: queryStockAvailability(all14Stores, basketItems)
-    InvSvc-->>Router: Store #04 (Navrangpura) has Complete Stock
-    Router-->>OrderSvc: Target Store = Store #04
-    OrderSvc->>InvSvc: placeSoftReservation(storeId=04, items, holdDuration=30m)
-    InvSvc->>InvSvc: Apply Buffer: Effective = Physical - 2
-    InvSvc->>POS: Send Reservation Lock RPC (30-Minute Hold)
-    InvSvc-->>OrderSvc: Soft Hold Confirmed
+    %% Phase 4: Pay & Confirm
+    OrderSvc->>Customer: 6. Request Payment (₹745.00)
+    Customer->>PayGW: 7. Pay via UPI
+    PayGW-->>OrderSvc: 8. Payment Success Callback
+    OrderSvc->>InvSvc: 9. Finalize Stock Deduction
+    OrderSvc-->>Customer: 10. Order Confirmed! (SMS + Pickup OTP)
 
-    %% Phase 4: Payment Capture & Order Confirmation
-    Note over Customer,PayGW: Phase 4: Secure Payment & Dispatch Trigger
-    OrderSvc->>UI: sendPaymentPrompt(orderId, netAmount)
-    UI-->>Customer: Push Payment Gateway Screen (Razorpay UPI)
-    Customer->>PayGW: Authorize UPI Payment (₹745.00)
-    PayGW-->>UI: Webhook: PaymentStatus = SUCCESS (TxnRef: TXN-9982)
-    UI->>OrderSvc: handlePaymentSuccess(orderId, txnRef)
-    OrderSvc->>InvSvc: convertSoftHoldToHardAllocation(storeId=04, orderId)
-    OrderSvc->>OrderSvc: transitionState(Status: ALLOCATED_TO_STORE)
-    OrderSvc->>Notif: dispatchOrderConfirmation(customerId, orderRef, pickupOTP)
-    Notif-->>Customer: SMS Alert: Order Confirmed! Dispatched from Navrangpura Store.
 ```
 
 ---
